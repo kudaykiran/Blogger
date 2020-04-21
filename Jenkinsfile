@@ -18,8 +18,8 @@ pipeline {
          stage('Build image') {
             steps{
                      sh 'docker login -u ukkb96 -p udaykiran@123'
-                     sh 'docker build -t ukkb96/jenkins-nodejs:v1 .'
-                     sh 'docker push ukkb96/jenkins-nodejs:v1'
+                     sh 'docker build -t ukkb96/jenkins-nodejs:v3 .'
+                     sh 'docker push ukkb96/jenkins-nodejs:v3'
                }
          }
          stage('QA Approval') {
