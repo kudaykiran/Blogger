@@ -30,7 +30,7 @@ pipeline {
         }
          stage('run image as a container') {
             steps{
-                      sh 'docker run --name blogger -t --publish 3000:3000 ukkb96/jenkins-nodejs:v1'
+                      sh 'docker run --name blogger -t --publish 3000:3000 ukkb96/jenkins-nodejs:v3'
                }
          }
     }
