@@ -1,4 +1,4 @@
 FROM node:alpine 
-WORKDIR /
+WORKDIR /src
 EXPOSE 3000
-CMD npm install && npm start
+CMD src/server.js npm start
