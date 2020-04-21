@@ -11,7 +11,6 @@ pipeline {
             steps {
                 sh 'npm install'
                 sh 'npm install express'
-                sh 'npm start &'
                 
             }
         }
@@ -22,16 +21,16 @@ pipeline {
                      sh 'docker push ukkb96/jenkins-nodejs:v3'
                }
          }
-         stage('QA Approval') {
+          stage( 'Approval for deployment') {
             steps{
-            input('ALL TESTS PASSED?')
+            input('All stages passed')
             sh "echo 'Approved. Ready for deployment...'"
             }
         }
-         stage('run image as a container') {
-            steps{
-                      sh 'docker run --name blogger -t --publish 3000:3000 ukkb96/jenkins-nodejs:v3'
-               }
-         }
+          stage('deploy') {
+            steps {
+                     sh 'npm start &'
+                  }
+          }
     }
 }
