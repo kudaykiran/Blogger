@@ -21,13 +21,7 @@ pipeline {
                      sh 'docker push ukkb96/jenkins-nodejs:v3'
                }
          }
-          stage( 'Approval for deployment') {
-            steps{
-            input('All stages passed')
-            sh "echo 'Approved. Ready for deployment...'"
-            }
-        }
-          stage('deploy') {
+         stage('deploy') {
             steps {
                      sh 'npm start &'
                   }
