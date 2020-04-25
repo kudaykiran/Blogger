@@ -1,7 +1,7 @@
-FROM node:alpine 
-WORKDIR /src
-EXPOSE 3000
-CMD src/server.js npm start
-
-
-
+FROM node:latest
+WORKDIR /app
+COPY package.json /app
+RUN npm install
+COPY . /app
+CMD npm start
+EXPOSE 8000
