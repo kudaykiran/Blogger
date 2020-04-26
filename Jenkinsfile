@@ -23,7 +23,7 @@ pipeline {
          }
          stage('deploy') {
             steps {
-                     sh 'docker run --name ukblog-dt -p 8000:8000 ukkb96/jenkins-nodejs:v3'
+                     sh 'docker run --name ukblog-dt -p 8000:8000 ukkb96/jenkins-nodejs:v3 &'
                   }
           }
     }
