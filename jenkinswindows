@@ -1,0 +1,30 @@
+pipeline {
+    agent { label 'master' }
+    stages {
+        
+        stage('Git pull code') {
+            steps {
+            git 'https://github.com/kudaykiran/Blogger.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                CMD 'npm install'
+                CMD 'npm install express'
+                
+            }
+        }
+         stage('Build image') {
+            steps{
+                     CMD 'docker login -u ukkb96 -p udaykiran@123'
+                     CMD 'docker build -t ukkb96/jenkins-nodejs:v3 .'
+                     CMD 'docker push ukkb96/jenkins-nodejs:v3'
+               }
+         }
+         stage('deploy') {
+            steps {
+                     CMD 'docker run --name ukblog-dt -p 8000:8000 ukkb96/jenkins-nodejs:v3 &'
+                  }
+          }
+    }
+}
